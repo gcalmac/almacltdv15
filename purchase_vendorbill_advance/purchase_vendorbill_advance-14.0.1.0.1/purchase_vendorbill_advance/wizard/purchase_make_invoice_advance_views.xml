@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2019 Sodexis
+     License OPL-1 (See LICENSE file for full copyright and licensing details). -->
+<odoo>
+    <record id="view_purchase_advance_payment_inv" model="ir.ui.view">
+        <field name="name">Vendor Bills</field>
+        <field name="model">purchase.advance.payment.inv</field>
+        <field name="arch" type="xml">
+            <form string="Purchase Vendor Bills">
+                <p class="oe_grey">
+                        Vendor Bills will be created in draft so that you can review
+                        them before validation.
+                    </p>
+                <group>
+                    <field name="count" attrs="{'invisible': [('count','=',1)]}" readonly="True" />
+                    <field
+                        name="advance_payment_method"
+                        class="oe_inline"
+                        widget="radio"
+                    />
+                    <field
+                        name="product_id"
+                        context="{'search_default_services': 1, 'default_type': 'service', 'default_invoice_policy': 'order'}"
+                        class="oe_inline"
+                        invisible="1"
+                    />
+                    <label
+                        for="amount"
+                        attrs="{'invisible': [('advance_payment_method', 'not in', ('fixed','percentage'))]}"
+                    />
+                    <div
+                        attrs="{'invisible': [('advance_payment_method', 'not in', ('fixed','percentage'))]}"
+                    >
+                        <field
+                            name="amount"
+                            attrs="{'required': [('advance_payment_method', 'in', ('fixed','percentage'))]}"
+                            class="oe_inline"
+                            widget="monetary"
+                        />
+                        <span
+                            attrs="{'invisible': [('advance_payment_method', '!=', 'percentage')]}"
+                            class="oe_inline"
+                        >%</span>
+                    </div>
+                </group>
+                <footer>
+                    <button
+                        name="create_vendor_bills"
+                        string="Create and View Bills"
+                        type="object"
+                        context="{'create_bill':True}"
+                        class="btn-primary"
+                    />
+                    <button
+                        name="create_vendor_bills"
+                        string="Create Vendor Bills"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_view_purchase_advance_payment_inv" model="ir.actions.act_window">
+        <field name="name">Vendor Bills</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.advance.payment.inv</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="purchase.model_purchase_order" />
+        <field name="binding_view_types">form</field>
+    </record>
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2019 Sodexis
+     License OPL-1 (See LICENSE file for full copyright and licensing details). -->
+<odoo>
+    <record id="purchase_order_form" model="ir.ui.view">
+        <field name="name">purchase.order.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//button[@name='action_create_invoice'][hasclass('oe_highlight')]"
+                position="attributes"
+            >
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath
+                expr="//button[@name='action_create_invoice'][2]"
+                position="attributes"
+            >
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_create_invoice']" position="before">
+                <button
+                    name="%(purchase_vendorbill_advance.action_view_purchase_advance_payment_inv)d"
+                    string="Create Vendor Bill"
+                    type="action"
+                    class="btn-primary"
+                    attrs="{'invisible': ['|', ('state', 'not in', ('purchase', 'done')), ('invoice_status', 'in', ('no', 'invoiced'))]}"
+                />
+            </xpath>
+            <xpath expr="//button[@name='action_create_invoice']" position="before">
+                <button
+                    name="%(purchase_vendorbill_advance.action_view_purchase_advance_payment_inv)d"
+                    string="Create Vendor Bill"
+                    type="action"
+                    context="{'default_advance_payment_method': 'percentage'}"
+                    attrs="{'invisible': ['|', ('state', 'not in', ('purchase', 'done')), ('invoice_status', 'not in', ('no', 'invoiced'))]}"
+                />
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']/tree/field[@name='product_id']"
+                position="after"
+            >
+                <field name="qty_to_invoice" invisible="1" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
