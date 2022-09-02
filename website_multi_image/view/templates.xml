@@ -1,0 +1,21 @@
+<odoo>
+  <data>
+
+    <template id="carousel_product_indicators" inherit_id="website_sale.carousel_product_indicators" name="Carousel Product">
+      <xpath expr="//ol[@t-if='len(product_images) > 1']//li" position="attributes">
+        <attribute name="t-att-value">product_image.id</attribute>
+      </xpath>
+
+      <xpath expr="//div[@t-ignore='True']/ol" position="attributes">
+        <attribute name="class">carousel-indicators owl owl-carousel owl-theme carousel-indicators d-inline-block position-static mx-auto</attribute>
+      </xpath>
+    </template>
+
+    <template id="shop_product_carousel_inherited" inherit_id="website_sale.shop_product_carousel">
+      <xpath expr="//t[@t-foreach='product_images']//div" position="attributes">
+        <attribute name="t-att-value">product_image.id</attribute>
+      </xpath>
+    </template>
+    
+  </data>
+</odoo>

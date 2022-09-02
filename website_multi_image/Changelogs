@@ -1,0 +1,3 @@
+1.> No model required for V13 as it already containe a model product.image to add extra images
+2.> Removed swiper js and css as Owl carousel is sufficient to create image carousel 
+3.> For mobile view instead of dots navigation button is use so no need of mobile.css
