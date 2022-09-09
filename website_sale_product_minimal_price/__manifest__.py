@@ -16,5 +16,6 @@
     "data": ["views/assets.xml", "views/templates.xml"],
     "assets": {
         "web.assets_frontend": ["/web/static/src/js/fields/field_utils.js","/website_sale_product_minimal_price/static/src/js/website_sale_product_minimal_price.js","/website_sale_product_minimal_price/static/src/js/website_sale_product_price_scale.js"],
+        "web.assets_tests": ["/website_sale_product_minimal_price/static/src/js/tour.js","/website_sale_product_minimal_price/static/src/js/test_product_with_no_prices_tour.js"],
     },
 }
