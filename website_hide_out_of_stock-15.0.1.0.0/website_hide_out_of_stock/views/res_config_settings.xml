@@ -1,0 +1,29 @@
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<odoo>
+    <data>
+        <record id="view_wk_website_config_settings_inherited" model="ir.ui.view">
+            <field name="name">Website Stock Settings</field>
+            <field name="model">website.stock.config.settings</field>
+            <field name="inherit_id" ref="website_stock.view_wk_website_config_settings" />
+            <field name="arch" type="xml">
+                <field name="wk_stock_type" position="after">
+                    <field name="wk_cron" />
+                </field>
+                <xpath expr="//form//div[hasclass('oe_button_box')]" position="inside">
+                    <button type="object" name="open_cron" attrs="{'invisible':[('wk_cron','!=','run_cron')]}" style="text-align:center; margin-left:10px;">
+                        <i class="fa fa-cog" style="margin-right: 6px;
+                        font-size: 20px;
+                        color: #7C7BAD;" />
+                        Configure Cron
+                    </button>
+                    <button type="object" name="set_availability_manually" attrs="{'invisible':[('wk_cron','in',['off','dynamic'])]}" style="text-align:center; margin-left:10px; width:150px !important" help="Update Availability of all products">
+                        <i class="fa fa-cogs" style="margin-right: 6px;
+                        font-size: 20px;
+                        color: #7C7BAD;" />
+                        Update Availabilitiy
+                    </button>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
