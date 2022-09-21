@@ -1,0 +1,18 @@
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<odoo>
+    <data noupdate="1">
+        <record forcecreate="True" id="ir_cron_scheduler_avalability" model="ir.cron">
+            <field name="name">Product Availability</field>
+            <field eval="False" name="active" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="priority">6</field>            
+            <field name="interval_number">60</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall" />
+            <field name="model_id" ref="model_product_template" />
+            <field name="state">code</field>
+            <field name="code">model.set_availability_cron()</field>
+        </record>
+    </data>
+</odoo>

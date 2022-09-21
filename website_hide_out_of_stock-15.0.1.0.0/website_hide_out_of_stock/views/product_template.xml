@@ -1,0 +1,16 @@
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<odoo>
+    <data>
+        <record id="Wk_website_stock_product_template" model="ir.ui.view">
+            <field name="name">product_template_form</field>
+            <field name="model">product.template</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view" />
+            <field name="arch" type="xml">
+                <header>
+                    <button string="Update Availability" type="object" name="update_product_availability" help="Update availability of current product"/>
+                </header>
+            </field>
+        </record>
+    </data>
+</odoo>
