@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Customize Options for Language Flag -->
+    <record id="website.header_language_selector" model="ir.ui.view">
+        <field name="customize_show" eval="True"></field>
+        <field name="name">Language Flag</field>
+    </record>
+</odoo>
